@@ -1,0 +1,221 @@
+# Maintainer: Vilmar Catafesta <vcatafesta@gmail.com>
+
+pkgname=chili-mate
+pkgdesc="Meta package for Mate"
+pkgver=$(date +%Y%m%d)
+pkgrel=$(date +%H%M)
+arch=('any')
+license=('MIT')
+url="https://github.com/chililinux/${pkgname}"
+source=("git+${url}.git")
+md5sums=('SKIP')
+depends=(
+  mate-desktop
+  mate-session-manager
+)
+optdepends=(
+  mate-control-center
+  mate-backgrounds
+  mate-control-center
+  mate-icon-theme
+  mate-menus
+  mate-notification-daemon
+  mate-panel
+  mate-polkit
+  mate-session-manager
+  mate-settings-daemon
+  mate-themes                 # Official themes for the MATE desktop
+  mate-user-guide
+  mate-extra
+  mate-power-manager
+  caja
+  marco
+  mozo
+  pluma
+  atril
+  engrampa
+  capitaine-cursors
+  beauty-icon-theme
+  # Xorg
+  xorg-server              # Servidor X11
+  xorg-xinit               # Inicialização do Xorg
+  xorg-xrandr              # Configuração de resolução e monitores
+  xorg-xsetroot            # Permite definir o papel de parede no Xorg
+  xorg-xrdb                # Banco de dados de recursos do X
+  # Wayland
+  wlroots                  # Biblioteca para composição no Wayland
+  xorg-xwayland            # Suporte para aplicativos X11 no Wayland
+  wayland                  # Protocolo Wayland
+  wayland-utils            # Ferramentas para Wayland
+  wlr-randr                # Alternativa ao xrandr para Wayland
+  # Aplicativos essenciais
+  xfce4-terminal           # Terminal alternativo baseado no XFCE
+  xterm                    # Terminal padrão do Xorg
+  # Gerenciamento de hardware e energia
+  acpid                    # Gerenciamento de eventos de energia
+  bluez                    # Suporte a Bluetooth
+  blueman                  # Gerenciador de Bluetooth
+  fprintd                  # Suporte a leitores de impressão digital
+  geoclue                  # Serviço de geolocalização
+  # Extras para integração e personalização
+  packagekit               # Integração com gerenciadores de pacotes
+  network-manager-applet   # Ícone de gerenciamento de rede
+  # Áudio
+  pavucontrol              # Controle de volume para PulseAudio
+  pipewire                 # Alternativa moderna ao PulseAudio para áudio
+  wireplumber              # Gerenciador de sessão para PipeWire
+  pipewire-pulse           # Low-latency audio/video router and processor - PulseAudio replacement
+  pipewire-alsa            # Low-latency audio/video router and processor - ALSA configuration
+  pipewire-jack            # Low-latency audio/video router and processor - JACK replacement
+  # Interface gráfica e login
+  #lxdm                     # Gerenciador de login leve e rápido, usado principalmente no LXDE.
+  lightdm                   # Gerenciador de login leve
+  lightdm-slick-greeter
+  lightdm-settings
+  lightdm-gtk-greeter     # Interface gráfica para LightDM
+  #sddm                   # Gerenciador de login moderno, compatível com Wayland
+  # Extras para Wayland
+  #waybar                   # Barra de status alternativa para Wayland
+  firefox                  # Navegador web popular e de código aberto, focado na privacidade e segurança.
+  #brave-browser            # Navegador baseado no Chromium, focado na privacidade, bloqueio de anúncios e velocidade.
+  # Pacotes da comunidade
+  chili-base-config
+  auto-tweaks-browser      # Aplica ajustes automáticos ao navegador para otimizar seu desempenho e funcionalidade.
+  big-store                # Gerenciador de grandes volumes de dados.
+  bigcontrolcenter-base    # Base para o Big Control Center, interface de gerenciamento do sistema.
+  chili-webapps            # Integra aplicativos web ao ambiente de desktop.
+  chili-restore-config     # Restaura configurações padrão de aplicativos de comunicação.
+  #chili-utils
+  #chili-iso2usb
+  #chili-clonedisk
+  bigbashview              # BigBashView is a python app to run Bash+HTML in a Desktop WebView
+  timeshift                # Ferramenta para criar snapshots incrementais do sistema.
+  grub-btrfs-timeshift     # Integra o Timeshift ao GRUB em sistemas Btrfs.
+  grub-btrfs               # Permite que o GRUB reconheça snapshots do Btrfs.
+  cups                     # Sistema de impressão comum no Linux.
+  system-config-printer    # Ferramenta gráfica para configurar e gerenciar impressoras.
+  splix                    # Driver de impressão para impressoras Samsung e Xerox.
+  samsung-unified-driver   # Drivers unificados para diversas impressoras Samsung.
+  cups-pdf                 # Extensão do CUPS para criar PDFs via impressão.
+  bigocrpdf                # Converte documentos PDF em texto editável via OCR.
+  bluez-cups               # Permite impressão via Bluetooth usando o BlueZ.
+  paru                     # AUR helper para instalação de pacotes do Arch User Repository.
+  #nautilus                 # Gerenciador de arquivos do GNOME.
+  ecrire                   # Processador de texto leve.
+  evisum                   # Ferramenta para visualização e análise de dados científicos.
+  gnome-disk-utility       # Utilitário gráfico para gerenciar discos e dispositivos de armazenamento.
+  # GVFS - Sistema de arquivos virtual
+  gvfs                      # Implementação do sistema de arquivos virtual para GIO
+  gvfs-afc                  # Backend para dispositivos móveis da Apple (AFC)
+  gvfs-dnssd                # Backend para DNS-SD e WebDAV (compartilhamento macOS)
+  gvfs-goa                  # Backend para Gnome Online Accounts (OwnCloud, etc.)
+  gvfs-google               # Backend para Google Drive
+  gvfs-gphoto2              # Backend para câmeras PTP e dispositivos MTP
+  gvfs-mtp                  # Backend para dispositivos MTP (Android, media players)
+  gvfs-nfs                  # Backend para NFS
+  gvfs-onedrive             # Backend para Microsoft OneDrive
+  gvfs-smb                  # Backend para compartilhamento de arquivos SMB/CIFS (Windows)
+  gvfs-wsdd                 # Backend para descoberta de serviços Web Services Dynamic Discovery (Windows)
+  conky                     # Light-weight system monitor for X, Wayland, and other things, too
+  conky-manager2            # GUI for managing Conky config files with options to browse and edit themes
+  plank                     # Elegant, simple, clean dock
+  brisk-menu                # Modern, efficient menu for the MATE Desktop Environment
+  # Office
+  libreoffice-fresh-pt-br # Portuguese (Brasil) language pack for LibreOffice Fresh
+  eog                     # Eye of Gnome: An image viewing and cataloging program
+  simplescreenrecorder    # A feature-rich screen recorder that supports X11 and OpenGL
+  mate-tweak              # Tweak tool for MATE (fork of MintDesktop)
+  adapta-gtk-theme        # An adaptive Gtk+ theme based on Material Design Guideline
+  arc-gtk-theme           # A flat theme with transparent elements for GTK 2,3,4 and Gnome-Shell
+  arc-icon-theme          # Arc icon theme. Official releases only
+  vlc                     # Multi-platform MPEG, VCD/DVD, and DivX player
+  # fontes
+  ttf-fira-mono
+  ttf-inconsolata           # Monospace font for pretty code listings and for the terminal
+  ttf-inconsolata-go-nerd   # Patched font Inconsolata Go from nerd fonts library
+  ttf-inconsolata-lgc-nerd  # Patched font Inconsolata LGC from nerd fonts library
+  ttf-inconsolata-nerd      # Patched font Inconsolata from nerd fonts library
+  ttf-inconsolata           # Monospace font for pretty code listings and for the terminal
+  ttf-inconsolata-go-nerd   # Patched font Inconsolata Go from nerd fonts library
+  ttf-inconsolata-lgc-nerd  # Patched font Inconsolata LGC from nerd fonts library
+  ttf-inconsolata-nerd      # Patched font Inconsolata from nerd fonts library
+  #drivers X
+  libxxf86vm              # X11 XFree86 video mode extension library
+  xf86-video-amdgpu       # X.org amdgpu video driver
+  xf86-video-ati          # X.org ati video driver
+  xf86-input-elographics  # X.org Elographics TouchScreen input driver
+  xf86-input-evdev        # X.org evdev input driver
+  xf86-input-libinput     # Generic input driver for the X.Org server based on libinput
+  xf86-input-synaptics    # Synaptics driver for notebook touchpads
+  xf86-input-vmmouse      # X.org VMWare Mouse input driver
+  xf86-input-void         # X.org void input driver
+  xf86-input-wacom        # X.Org Wacom tablet driver
+  xf86-video-dummy        # X.org dummy video driver
+  xf86-video-fbdev        # X.org framebuffer video driver
+  xf86-video-intel        # X.org Intel i810/i830/i915/945G/G965+ video drivers
+  xf86-video-nouveau      # Open Source 3D acceleration driver for nVidia cards
+  xf86-video-qxl          # Xorg X11 qxl video driver
+  xf86-video-sisusb       # X.org SiS USB video driver
+  xf86-video-vesa         # X.org vesa video driver
+  xf86-video-vmware       # X.org vmware video driver
+  xf86-video-voodoo       # X.org 3dfx Voodoo1/Voodoo2 2D video driver
+  lib32-libxxf86vm        # X11 XFree86 video mode extension library (32-bit)
+  xf86-video-sis          # X.org SiS video driver
+)
+
+# Automatically detect and use the correct install file
+if [ -e "${pkgname}.install" ]; then
+	install=${pkgname}.install
+elif [ -e "pkgbuild.install" ]; then
+	install=pkgbuild.install
+fi
+
+prepare() {
+	cd "${srcdir}/${pkgname}"
+	# Add any preparation steps here, if needed
+	# For example: patch -p1 < "${srcdir}/patch-file.patch"
+}
+
+build() {
+	cd "${srcdir}/${pkgname}"
+	# Add build steps here, if needed
+	# For example: make
+}
+
+check() {
+	cd "${srcdir}/${pkgname}"
+	# Add check/test steps here, if needed
+	# For example: make check
+}
+
+package() {
+	cd "${srcdir}/${pkgname}"
+
+	mkdir -p "${pkgdir}/usr/share/${pkgname}"
+	printf "%s\n" "${optdepends[@]}" >"${pkgdir}/usr/share/${pkgname}/optdepends"
+
+	# Determine the correct source directory
+	if [ -d "${pkgname}" ]; then
+		srcdir="${srcdir}/${pkgname}/${pkgname}"
+	else
+		srcdir="${srcdir}/${pkgname}"
+	fi
+
+	# Install files
+	local dirs=("usr" "etc" "opt")
+	for dir in "${dirs[@]}"; do
+		if [ -d "${srcdir}/${dir}" ]; then
+			cp -a "${srcdir}/${dir}" "${pkgdir}/"
+		fi
+	done
+
+	# Install license file if present
+	if [ -f "LICENSE" ]; then
+		install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	fi
+
+	# Install documentation if present
+	if [ -f "README.md" ]; then
+		install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	fi
+}
