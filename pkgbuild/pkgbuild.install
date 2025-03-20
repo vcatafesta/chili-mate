@@ -20,7 +20,7 @@ export reset="\033[0m"
 declare IS_UPGRADE=false
 declare DM='lightdm'
 declare WM='mate'
-declare pkgname=comm-"${WM}"
+declare pkgname=chili-"${WM}"
 declare servicesToEnable=(${DM} avahi-daemon sshd cups bluetooth)
 declare servicesToDisable=(lxdm sddm gdm)
 
